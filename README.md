@@ -1,2 +1,2 @@
-# BlockateTerminal
-Custom terminal for blockate commands.
+## BlockateTerminal
+# Custom terminal for blockate commands.
