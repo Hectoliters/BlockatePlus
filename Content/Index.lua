@@ -35,7 +35,7 @@ Label.AnchorPoint = Vector2.new(1, 0)
 Label.Position = UDim2.new(1, 0, 0, 0)
 Label.Size = UDim2.new(1, 0, 0, 32)
 Label.Font = Enum.Font.SourceSans
-Label.Text = "BlockateTerminal"
+Label.Text = "Blockate+"
 Label.TextSize = 32.000
 Label.TextXAlignment = Enum.TextXAlignment.Left
 Label.TextYAlignment = Enum.TextYAlignment.Top
@@ -83,9 +83,14 @@ player.Chatted:Connect(function(message)
     local command = message:gsub("!", "")
     if command == "cmds" then
         local CustomSection = game.ReplicatedStorage:FindFirstChild("CustomSection"):Clone()
-        CustomSection.Parent = player.PlayerGui.MainGUI.Commands.ScrollingFrame.Content
-        player.PlayerGui.MainGUI.Commands.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, player.PlayerGui.MainGUI.Commands.ScrollingFrame.CanvasSize.Y.Offset + CustomSection.Size.Y.Offset)
+        local Commands = player.PlayerGui.MainGUI:WaitForChild("Commands")
+        local ScrollingFrame = Commands:WaitForChild("ScrollingFrame")
+        task.wait()
+        CustomSection.Parent = ScrollingFrame.Content
+        ScrollingFrame.Search:Destroy()
+        task.wait()
+        ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, ScrollingFrame.CanvasSize.Y.Offset + Section.Size.Y.Offset)
     end
 end)
 
-CreateCommand("mass (modification) (value)", 'Modifies every block with the property you define, including "Destroy" and many more.')
+CreateCommand("mass (modification) (value)", "Modifies every block")
