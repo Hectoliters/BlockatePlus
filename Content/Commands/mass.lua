@@ -32,9 +32,9 @@ Functionalities = {
     Public("Type the Audio ID.")
     local Value = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
-    for _, v in pairs(Blocks) do
+    for i, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("soundblock", {v, Value})
-    FeedbackFrame.Text = v.."/"..#Blocks
+    FeedbackFrame.Text = i.."/"..#Blocks
     task.wait()
     end
     end;
@@ -44,9 +44,10 @@ Functionalities = {
     Public("Type the sign text.")
     local Value = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
-    for _, v in pairs(Blocks) do
+    FeedbackFrame.Visible = true
+    for i, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("sign", {v, Value})
-    FeedbackFrame.Text = v.."/"..#Blocks
+    FeedbackFrame.Text = i.."/"..#Blocks
     task.wait()
     end
     end;
@@ -54,9 +55,10 @@ Functionalities = {
 
     ["trip"] = function()
     local Blocks = game.Workspace.Blocks:GetChildren()
-    for _, v in pairs(Blocks) do
+    FeedbackFrame.Visible = true
+    for i, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("trip", v)
-    FeedbackFrame.Text = v.."/"..#Blocks
+    FeedbackFrame.Text = i.."/"..#Blocks
     task.wait()
     end
     end;
@@ -64,9 +66,10 @@ Functionalities = {
 
     ["kill"] = function()
     local Blocks = game.Workspace.Blocks:GetChildren()
-    for _, v in pairs(Blocks) do
+    FeedbackFrame.Visible = true
+    for i, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("kill", v)
-    FeedbackFrame.Text = v.."/"..#Blocks
+    FeedbackFrame.Text = i.."/"..#Blocks
     task.wait()
     end
     end;
@@ -76,9 +79,10 @@ Functionalities = {
     Public("Type the spotsign text.")
     local Value = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
-    for _, v in pairs(Blocks) do
+    FeedbackFrame.Visible = true
+    for i, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("spotsign", {v, Value})
-    FeedbackFrame.Text = v.."/"..#Blocks
+    FeedbackFrame.Text = i.."/"..#Blocks
     task.wait()
     end
     end;
@@ -88,9 +92,10 @@ Functionalities = {
     Public("Type the maximum baller time.")
     local Value = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
-    for _, v in pairs(Blocks) do
+    FeedbackFrame.Visible = true
+    for i, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("baller", {v, Value})
-    FeedbackFrame.Text = v.."/"..#Blocks
+    FeedbackFrame.Text = i.."/"..#Blocks
     task.wait()
     end
     end;
@@ -134,7 +139,6 @@ function HandleMass(Property)
     if Property == nil then
         Public("Thats not a functionality.")
     else
-        FeedbackFrame.Visible = true
         return Property
     end
 end
