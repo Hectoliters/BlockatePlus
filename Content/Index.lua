@@ -105,4 +105,5 @@ end)
 
 CreateCommand("mass", "Modifies every block with a functionality")
 CreateCommand("massspeed", "Modifies the speed in which mass occours (will skip blocks)")
+CreateCommand("daball", "Makes everyone dab quickly (Cant be stopped)")
 Section.Parent = game.ReplicatedStorage
