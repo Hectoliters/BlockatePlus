@@ -80,7 +80,6 @@ function CreateCommand(name, info)
 end 
 
 player.Chatted:Connect(function(message)
-    if message:sub(1, 1) == "!" then
     local command = message:gsub("!", "")
     if command == "cmds" then
         local CustomSection = game.ReplicatedStorage:FindFirstChild("CustomSection"):Clone()
@@ -92,9 +91,12 @@ player.Chatted:Connect(function(message)
         task.wait()
         ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, ScrollingFrame.CanvasSize.Y.Offset + Section.Size.Y.Offset)
     else
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Hectoliters/BlockatePlus/main/Content/Commands/"..command..".lua"))()
+        for _, v in pairs(commands) do
+            if command == v then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Hectoliters/BlockatePlus/main/Content/Commands/"..command..".lua"))()
+            end
+        end
     end
-end
 end)
 
 CreateCommand("mass (modification) (value)", "Modifies every block with a functionality")
