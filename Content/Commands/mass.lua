@@ -1,3 +1,26 @@
+-- Essential:
+
+local CustomANC = Instance.new("ScreenGui")
+local FeedbackFrame = Instance.new("TextLabel")
+
+CustomANC.Name = "CustomANC2"
+CustomANC.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+CustomANC.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+FeedbackFrame.Name = "FeedbackFrame"
+FeedbackFrame.Visible = false
+FeedbackFrame.Parent = CustomANC
+FeedbackFrame.BackgroundTransparency = 1.000
+FeedbackFrame.Position = UDim2.new(0.125, 0, 0.125, 0)
+FeedbackFrame.Size = UDim2.new(0.75, 0, 0.75, 0)
+FeedbackFrame.ZIndex = 5
+FeedbackFrame.Font = Enum.Font.SourceSansLight
+FeedbackFrame.Text = "1"
+FeedbackFrame.TextColor3 = Color3.fromRGB(255, 255, 255)
+FeedbackFrame.TextScaled = true
+FeedbackFrame.TextStrokeTransparency = 0.000
+FeedbackFrame.TextWrapped = true
+
 -- Variables:
 
 local player = game.Players.LocalPlayer
@@ -6,12 +29,68 @@ local player = game.Players.LocalPlayer
 
 Functionalities = {
     ["soundblock"] = function()
-    print("yo mama so fat")
     Public("Type the Audio ID.")
-    local ID = player.Chatted:Wait()
+    local Value = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
     for _, v in pairs(Blocks) do
-    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("soundblock", {v, ID})
+    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("soundblock", {v, Value})
+    FeedbackFrame.Text = v.."/"..#Blocks
+    task.wait()
+    end
+    end;
+    script:Destroy(),
+
+    ["sign"] = function()
+    Public("Type the sign text.")
+    local Value = player.Chatted:Wait()
+    local Blocks = game.Workspace.Blocks:GetChildren()
+    for _, v in pairs(Blocks) do
+    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("sign", {v, Value})
+    FeedbackFrame.Text = v.."/"..#Blocks
+    task.wait()
+    end
+    end;
+    script:Destroy(),
+
+    ["trip"] = function()
+    local Blocks = game.Workspace.Blocks:GetChildren()
+    for _, v in pairs(Blocks) do
+    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("trip", v)
+    FeedbackFrame.Text = v.."/"..#Blocks
+    task.wait()
+    end
+    end;
+    script:Destroy(),
+
+    ["kill"] = function()
+    local Blocks = game.Workspace.Blocks:GetChildren()
+    for _, v in pairs(Blocks) do
+    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("kill", v)
+    FeedbackFrame.Text = v.."/"..#Blocks
+    task.wait()
+    end
+    end;
+    script:Destroy(),
+
+    ["spotsign"] = function()
+    Public("Type the spotsign text.")
+    local Value = player.Chatted:Wait()
+    local Blocks = game.Workspace.Blocks:GetChildren()
+    for _, v in pairs(Blocks) do
+    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("spotsign", {v, Value})
+    FeedbackFrame.Text = v.."/"..#Blocks
+    task.wait()
+    end
+    end;
+    script:Destroy(), 
+    
+    ["baller"] = function()
+    Public("Type the maximum baller time.")
+    local Value = player.Chatted:Wait()
+    local Blocks = game.Workspace.Blocks:GetChildren()
+    for _, v in pairs(Blocks) do
+    game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("baller", {v, Value})
+    FeedbackFrame.Text = v.."/"..#Blocks
     task.wait()
     end
     end;
@@ -54,8 +133,10 @@ function HandleMass(Property)
     local Property = Functionalities[Property]
     if Property == nil then
         Public("Thats not a functionality.")
+    else
+        FeedbackFrame.Visible = true
+        return Property
     end
-    return Property
 end
 local Property = player.Chatted:Wait()
 print(Property)

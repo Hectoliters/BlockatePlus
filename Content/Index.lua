@@ -99,4 +99,4 @@ player.Chatted:Connect(function(message)
     end
 end)
 
-CreateCommand("mass (modification) (value)", "Modifies every block with a functionality")
+CreateCommand("mass", "Modifies every block with a functionality")
