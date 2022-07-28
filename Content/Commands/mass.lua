@@ -3,6 +3,7 @@
 local CustomANC = Instance.new("ScreenGui")
 local FeedbackFrame = Instance.new("TextLabel")
 local Speed = tonumber(readfile("BlockatePlus/MassSpeed.txt"))
+local Target = game.Players:GetUserIdFromNameAsync(readfile("BlockatePlus/MassTarget.txt"))
 if Speed == 0 then
     Speed = 1
 end
@@ -32,12 +33,12 @@ local player = game.Players.LocalPlayer
 
 Functionalities = {
     ["soundblock"] = function()
-        FeedbackFrame.Text = "Type the Audio ID."
+    FeedbackFrame.Text = "Type the Audio ID."
     local Value = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("soundblock", {v, Value})
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)
@@ -56,7 +57,7 @@ Functionalities = {
     local Blocks = game.Workspace.Blocks:GetChildren()
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("sign", {v, Value})
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)
@@ -73,7 +74,7 @@ Functionalities = {
     local Blocks = game.Workspace.Blocks:GetChildren()
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("tripper",{v})
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)
@@ -90,7 +91,7 @@ Functionalities = {
     local Blocks = game.Workspace.Blocks:GetChildren()
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("kill",{v})
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)
@@ -109,7 +110,7 @@ Functionalities = {
     local Blocks = game.Workspace.Blocks:GetChildren()
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("spotsign", {v, Value})
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)
@@ -128,7 +129,7 @@ Functionalities = {
     local Blocks = game.Workspace.Blocks:GetChildren()
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("baller", {v, Value})
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)
@@ -146,7 +147,7 @@ Functionalities = {
     FeedbackFrame.Visible = true
     local lasti = 1
     for i, v in pairs(Blocks) do
-    if i <= lasti then
+    if i <= lasti and (Target == 1 or (not Target:FindFirstChild("Creator") or Target == v.Creator.Value)) then
         task.wait()
     game.ReplicatedStorage.Sockets.Edit.Delete:FireServer(v)
     FeedbackFrame.Text = math.round(i/Speed).."/"..math.round(#Blocks/Speed)

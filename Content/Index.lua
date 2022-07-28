@@ -2,6 +2,8 @@ if not isfolder("BlockatePlus") then
     makefolder("BlockatePlus")
     writefile("BlockatePlus/MassSpeed.txt", "0")
     print(readfile("BlockatePlus/MassSpeed.txt"))
+    writefile("BlockatePlus/MassTarget.txt", "Roblox")
+    print(readfile("BlockatePlus/MassTarget.txt"))
 end
 
 -- Variables:
@@ -105,4 +107,5 @@ end)
 
 CreateCommand("mass", "Modifies every block with a functionality")
 CreateCommand("massspeed", "Modifies the speed in which mass occours (will skip blocks)")
+CreateCommand("masstarget", "Makes the mass system only target one person")
 Section.Parent = game.ReplicatedStorage
