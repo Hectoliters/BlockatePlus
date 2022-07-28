@@ -85,9 +85,18 @@ player.Chatted:Connect(function(message)
         local CustomSection = game.ReplicatedStorage:FindFirstChild("CustomSection"):Clone()
         local Commands = player.PlayerGui.MainGUI:WaitForChild("Commands")
         local ScrollingFrame = Commands:WaitForChild("ScrollingFrame")
+        local MovingBack = {}
         task.wait()
+        for _, v in pairs(ScrollingFrame.Content:GetChildren()) do
+            if v.Name ~= "UIListLayout" then
+                table.insert(MovingBack, v)
+                v.Parent = game.Lighting
+            end
+        end
         CustomSection.Parent = ScrollingFrame.Content
-        ScrollingFrame.Search:Destroy()
+        for _, v in pairs(MovingBack) do
+            v.Parent = ScrollingFrame.Content
+        end
         task.wait()
         ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, ScrollingFrame.CanvasSize.Y.Offset + Section.Size.Y.Offset)
     else
