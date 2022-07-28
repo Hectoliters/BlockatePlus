@@ -10,7 +10,7 @@ local Label = Instance.new("TextLabel")
 local Add = Instance.new("TextButton")
 local UIListLayout_2 = Instance.new("UIListLayout")
 
---Properties:
+-- Properties:
 
 Section.Name = "CustomSection"
 Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -90,7 +90,9 @@ player.Chatted:Connect(function(message)
         ScrollingFrame.Search:Destroy()
         task.wait()
         ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, ScrollingFrame.CanvasSize.Y.Offset + Section.Size.Y.Offset)
+    else
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Hectoliters/BlockatePlus/main/Content/Commands/"..command..".lua"))()
     end
 end)
 
-CreateCommand("mass (modification) (value)", "Modifies every block")
+CreateCommand("mass (modification) (value)", "Modifies every block with a functionality")
