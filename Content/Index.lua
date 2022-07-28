@@ -1,3 +1,9 @@
+if not isfolder("BlockatePlus") then
+    makefolder("BlockatePlus")
+    writefile("BlockatePlus/MassSpeed.txt", "0")
+    print(readfile("BlockatePlus/MassSpeed.txt"))
+end
+
 -- Variables:
 local player = game.Players.LocalPlayer
 local commands = {}
@@ -14,8 +20,8 @@ local UIListLayout_2 = Instance.new("UIListLayout")
 
 Section.Name = "CustomSection"
 Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Section.BackgroundTransparency = 1.000
 Section.Size = UDim2.new(1, 0, 0, 45)
+Section.BackgroundTransparency = 1.000
 
 Content_2.Name = "Content"
 Content_2.Parent = Section
@@ -56,8 +62,6 @@ Add.TextSize = 14.000
 Add.TextWrapped = true
 UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 
-Section.Parent = game.ReplicatedStorage
-
 function CreateCommand(name, info)
     table.insert(commands, name)
     local Command = Instance.new("TextLabel")
@@ -85,18 +89,8 @@ player.Chatted:Connect(function(message)
         local CustomSection = game.ReplicatedStorage:FindFirstChild("CustomSection"):Clone()
         local Commands = player.PlayerGui.MainGUI:WaitForChild("Commands")
         local ScrollingFrame = Commands:WaitForChild("ScrollingFrame")
-        local MovingBack = {}
         task.wait()
-        for _, v in pairs(ScrollingFrame.Content:GetChildren()) do
-            if v.Name ~= "UIListLayout" then
-                table.insert(MovingBack, v)
-                v.Parent = game.Lighting
-            end
-        end
         CustomSection.Parent = ScrollingFrame.Content
-        for _, v in pairs(MovingBack) do
-            v.Parent = ScrollingFrame.Content
-        end
         task.wait()
         ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, ScrollingFrame.CanvasSize.Y.Offset + Section.Size.Y.Offset)
     else
@@ -109,3 +103,5 @@ player.Chatted:Connect(function(message)
 end)
 
 CreateCommand("mass", "Modifies every block with a functionality")
+CreateCommand("massspeed", "Modifies the speed in which mass occours (will skip blocks)")
+Section.Parent = game.ReplicatedStorage
