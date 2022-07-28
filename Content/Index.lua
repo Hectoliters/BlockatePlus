@@ -22,7 +22,7 @@ local UIListLayout_2 = Instance.new("UIListLayout")
 
 Section.Name = "CustomSection"
 Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Section.Size = UDim2.new(1, 0, 0, 32)
+Section.Size = UDim2.new(1, 0, 0, 45)
 Section.BackgroundTransparency = 1.000
 
 Content_2.Name = "Content"
