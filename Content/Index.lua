@@ -20,7 +20,7 @@ local UIListLayout_2 = Instance.new("UIListLayout")
 
 Section.Name = "CustomSection"
 Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Section.Size = UDim2.new(1, 0, 0, 45)
+Section.Size = UDim2.new(1, 0, 0, 32)
 Section.BackgroundTransparency = 1.000
 
 Content_2.Name = "Content"
@@ -77,6 +77,7 @@ function CreateCommand(name, info)
     Command.Font = Enum.Font.SourceSans
     Command.Text = "!"..name.. " - "..info
     Command.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Section.Size = UDim2.new(1, 0, 0, Section.Size.Y.Offset + 13)
     Command.TextSize = 14.000
     Command.TextWrapped = true
     Command.TextXAlignment = Enum.TextXAlignment.Left
