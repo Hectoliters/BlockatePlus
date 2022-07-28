@@ -5,14 +5,17 @@ local player = game.Players.LocalPlayer
 -- Functionalities
 
 Functionalities = {
-    ["Audio"] = function()
+    ["soundblock"] = function()
+    print("yo mama so fat")
     Public("Type the Audio ID.")
-    local ID = player.Chatted:Wait().message
+    local ID = player.Chatted:Wait()
     local Blocks = game.Workspace.Blocks:GetChildren()
     for _, v in pairs(Blocks) do
     game.ReplicatedStorage.Sockets.Edit.EditBlock:FireServer("soundblock", {v, ID})
+    task.wait()
     end
-    end
+    end;
+    script:Destroy()
     }
 
 -- Properties:
@@ -54,5 +57,6 @@ function HandleMass(Property)
     end
     return Property
 end
-local Property = player.Chatted:Wait().message
-HandleMass(Property)
+local Property = player.Chatted:Wait()
+print(Property)
+HandleMass(Property)()
