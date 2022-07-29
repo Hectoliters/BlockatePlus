@@ -194,6 +194,7 @@ end
 player.Chatted:Connect(function(message)
     local command = message:gsub("!", "")
     local command = command:gsub(" ", "")
+    print(command)
     if command == "cmds" then
         local CustomSection = game.ReplicatedStorage:FindFirstChild("CustomSection"):Clone()
         local Commands = player.PlayerGui.MainGUI:WaitForChild("Commands")

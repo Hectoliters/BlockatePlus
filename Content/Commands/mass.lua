@@ -3,7 +3,7 @@
 local CustomANC = Instance.new("ScreenGui")
 local FeedbackFrame = Instance.new("TextLabel")
 local Speed = tonumber(readfile("BlockatePlus/MassSpeed.txt"))
-local DisplaySpeed = Speed
+local DisplaySpeed = Speed*2
 local lasti = 1
 if Speed == 0 then
     DisplaySpeed = 1
